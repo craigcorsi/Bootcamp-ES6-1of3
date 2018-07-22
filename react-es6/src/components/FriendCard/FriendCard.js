@@ -20,6 +20,9 @@ const FriendCard = props => (
         <li>
           <strong>Location:</strong> {props.location}
         </li>
+        <li>
+          <strong>Name starts with s?:</strong> {props.startsWithS}
+        </li>
         <button onClick={ () => { props.remove(props.id) } }> Remove Friend </button>
       </ul>
     </div>

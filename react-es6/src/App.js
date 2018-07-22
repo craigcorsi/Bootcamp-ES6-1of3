@@ -3,15 +3,19 @@ import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import FriendCard from "./components/FriendCard";
 import friends from "./friends.json";
+import dextersLab from "./dexter.json";
+
+var allFriends = [...friends, ...dextersLab];
+console.log(allFriends);
 
 class App extends React.Component {
   state = {
-    friends: friends
+    allFriends: allFriends
   };
 
   remove = (id) => {
     this.setState({
-      friends: this.state.friends.filter(function (friend) {
+      allFriends: this.state.allFriends.filter(function (friend) {
         return friend.id !== id;
       })
     });
@@ -21,12 +25,13 @@ class App extends React.Component {
     return (
       <Wrapper>
         <Title>Friends List</Title>
-        {friends.map((friend) => <FriendCard
+        {allFriends.map((friend) => <FriendCard
           id={friend.id}
           image={friend.image}
           location={friend.location}
           name={friend.name}
           occupation={friend.occupation}
+          startsWithS={friend.name.startsWith("S") ? "true": "false"}
           remove={this.remove}
         />)}
       </Wrapper>
